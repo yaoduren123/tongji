@@ -1,6 +1,6 @@
 
 (function() {
-	//如果window下已经有QIHOO_MONITOR，不做任何事情
+	//如果window下已经有MONITOR，不做任何事情
 	if(typeof window.MONITOR !== 'undefined') {
 		return;
 	}
@@ -10,7 +10,7 @@
 		//设置__guid这个cookie存放域，如果为空，就保存在页面当前域，如果为"360.cn"，cookie会被设置到".360.cn"，依此类推
 		guidCookieDomains = [];  
 
-	var QIHOO_MONITOR = (function(window, undefined) {
+	var MONITOR = (function(window, undefined) {
 		var isLocal;
 		//有时候monitor.js会在file://或者res://协议下使用，判断下
 		(function() {
@@ -180,7 +180,7 @@
 
 		/**
 		 * 工具集，用来获取具体项目的值
-		 * 可通过QIHOO_MONITOR.util.[方法名]来访问
+		 * 可通过MONITOR.util.[方法名]来访问
 		 * 增加或覆盖这里的方法，可以实现更多功能
 		 * @type {Object}
 		 */
@@ -413,7 +413,7 @@
 
 		/**
 		 * 获取数据集合的方法
-		 * 可通过QIHOO_MONITOR.data.[方法名]来访问
+		 * 可通过MONITOR.data.[方法名]来访问
 		 * 增加或覆盖这里的方法，可以实现更多功能
 		 * @type {Object}
 		 */
@@ -670,7 +670,7 @@
 					that.log(params, 'click');
 				});
 
-				QIHOO_MONITOR.getClickAndKeydown = function() {
+				MONITOR.getClickAndKeydown = function() {
 					return that;
 				};
 				
@@ -680,7 +680,7 @@
 	})(window);
 
 	//默认URL配置，并启用鼠标点击和按键统计
-	QIHOO_MONITOR.setConf({
+	MONITOR.setConf({
 		trackUrl : '',  //设置url
 		clickUrl : '',  //设置url
 		wpoUrl : ''   //设置url
