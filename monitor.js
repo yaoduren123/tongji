@@ -1,24 +1,14 @@
-/** 
- * 统计代码
- * update : 
- * v1.3.2 (2014.04.30) 修改 count Cookie 名为 monitor_count
- * v1.3.1 (2013.11.20) 增加对 IE11 版本号的判断
- * v1.3.0 (2013.08.14) 引入了巨东的bk机制，解决了新增汇总板块需要修改setId的麻烦
- * v1.2.8 (2013.07.31) 针对几个新域名做了处理，_guid这个cookie都放在根域下 
- * v1.2.7 (2013.04.27) 更改monitor名称为QIHOO_MONITOR，页面无其他monitor时，monitor==QIHOO_MONITOR
- * v1.2.6 (2013.01.30) 增加对button和input type=button|submit 两种元素的统计
- * v1.2.5 (2012.12.21) 修改点击统计为mousedown时发请求，减少原页面跳转后统计不到的情况
- */
+
 (function() {
 	//如果window下已经有QIHOO_MONITOR，不做任何事情
-	if(typeof window.QIHOO_MONITOR !== 'undefined') {
+	if(typeof window.MONITOR !== 'undefined') {
 		return;
 	}
 
-	var version = 'v1.3.2 (2014.11.21)',
+	var version = 'v1.3.2',
 
 		//设置__guid这个cookie存放域，如果为空，就保存在页面当前域，如果为"360.cn"，cookie会被设置到".360.cn"，依此类推
-		guidCookieDomains = ['360.cn', 'so.com', 'leidian.com']; 
+		guidCookieDomains = [];  
 
 	var QIHOO_MONITOR = (function(window, undefined) {
 		var isLocal;
@@ -691,14 +681,11 @@
 
 	//默认URL配置，并启用鼠标点击和按键统计
 	QIHOO_MONITOR.setConf({
-		trackUrl : 'http://s.360.cn/w360/s.htm',
-		clickUrl : 'http://s.360.cn/w360/c.htm',
-		wpoUrl : 'http://s.360.cn/w360/p.htm'
+		trackUrl : '',  //设置url
+		clickUrl : '',  //设置url
+		wpoUrl : ''   //设置url
 	});
 
-	window.QIHOO_MONITOR = QIHOO_MONITOR;
+	window.MONITOR = MONITOR;
 
-	if(typeof window.monitor === 'undefined') {
-		window.monitor = QIHOO_MONITOR;
-	}
 })();
